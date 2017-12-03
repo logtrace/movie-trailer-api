@@ -4,6 +4,7 @@
   "description": "An api to get movie trailers for viaplay content",
   "main": "src/index.js",
   "options": {
+    "mocha": "--require scripts/test_runner src/**/__tests__/**/*.js",
     "babel": "./src --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files"
   },
   "scripts": {
