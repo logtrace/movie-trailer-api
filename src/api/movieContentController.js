@@ -1,4 +1,3 @@
-import Promise from 'bluebird';
 import axios from 'axios';
 
 export const getMovieContentFromResource = resourceLink => {
