@@ -16,6 +16,12 @@ export const getMovieContentFromResource = resourceLink => {
     });
 };
 
-const getMovieId = content => {
+const getMovieIdFromContent = content => {
   return content._embedded['viaplay:blocks'][0]._embedded['viaplay:product'].content.imdb.id;
 }
+
+
+export const getMovieIdFromResource = resourceLink =>  {
+  return getMovieContentFromResource(resourceLink)
+    .then(getMovieIdFromContent);
+};
