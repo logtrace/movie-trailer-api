@@ -1,0 +1,45 @@
+{
+  "name": "movie-trailer-api",
+  "version": "1.0.0",
+  "description": "An api to get movie trailers for viaplay content",
+  "main": "src/index.js",
+  "options": {
+    "babel": "./src --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files"
+  },
+  "scripts": {
+    "testonly": "mocha $npm_package_options_mocha",
+    "build": "rimraf dist/ && babel $npm_package_options_babel",
+    "start": "npm run build && node dist/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/logtrace/movie-trailer-api.git"
+  },
+  "keywords": [
+    "movie",
+    "youtube",
+    "trailers"
+  ],
+  "author": "Sithum Nissanka",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/logtrace/movie-trailer-api/issues"
+  },
+  "homepage": "https://github.com/logtrace/movie-trailer-api#readme",
+  "dependencies": {
+    "apicache": "^1.1.0",
+    "axios": "^0.17.1",
+    "bluebird": "^3.5.1",
+    "express": "^4.16.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
+    "mocha": "^4.0.1",
+    "nock": "^9.1.4",
+    "rimraf": "^2.6.2",
+    "timely": "^0.2.0"
+  }
+}
