@@ -112,3 +112,5 @@ Sample response;
 * Logging is implemented only in `server.js` to show the approach but other source code was left out. Logging level change according to the environment is not implemented but can be easily achieved by extending the current implementation. This is intentionally left out since these are various aspects of an implementation which is important but not necessarily the focus of this assignment.
 
 * API versioning is not added but should be and important part. This was left out since there are no functionlity to add as a different version.
+
+* Node clustering can be added if the production deployment is done in a tradtional load balanced environment. This is not needed if the service is deployed as a serverless module.
