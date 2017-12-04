@@ -7,7 +7,12 @@ let cache = apicache.middleware;
 const app = express();
 const port = process.env.PORT || 3000;
 
-//Add routes to the application
+// Handle invalid routes
+app.use((req, res) => {
+  res.status(404).json({status: 404, message: `${req.originalUrl} not found`});
+});
+
+// Add routes to the application
 routes(app);
 
 app.listen(port);

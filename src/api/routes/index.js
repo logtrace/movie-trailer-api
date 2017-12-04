@@ -18,11 +18,6 @@ const paramValidator = param => {
   }
 }
 
-const routes = app => {
-  app.route('/trailer')
-    .get(paramValidator('resourceLink'), getTrailerData);
-}
-
 const getTrailerData = (req, res) => {
   getTrailerContentForSingleMovie(req.query.resourceLink)
     .then(response => {
@@ -31,6 +26,11 @@ const getTrailerData = (req, res) => {
     .catch(error => {
       res.status(error.status).json(error);
     });
+}
+
+const routes = app => {
+  app.route('/trailer')
+    .get(paramValidator('resourceLink'), getTrailerData);
 }
 
 export default routes;
