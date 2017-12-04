@@ -1,3 +1,4 @@
+import {describe, it} from 'mocha';
 import chai, {expect} from 'chai';
 import promised from 'chai-as-promised';
 import nock from 'nock';
@@ -7,6 +8,7 @@ import {viaplayJson, viaplay404Json, tmdbJson, tmdb404Json} from './fixtures';
 
 import {getMovieContentFromResource, getMovieIdFromResource} from '../api/movieContentController';
 import { getTrailerContent, getTrailerContentFromMovieId, getTrailerUrlMappedContent, getTrailerUrlsFromMovieId } from '../api/tmdbContentController';
+import { getTrailerContentForSingleMovie } from '../api/trailerController';
 
 chai.use(promised);
 
@@ -96,5 +98,25 @@ describe('Get content from TMDB', () => {
     nock(`${url}`).get(path).reply(200, tmdbJson);
 
     expect(getTrailerUrlsFromMovieId(movieId)).to.eventually.have.length(3);
-  })
+  });
+});
+
+describe('Get trailer content', () => {
+  const viaplayUrl = testConfig.viaplay.url;
+  const viaplayPath = testConfig.viaplay.path;
+  const tmdbUrl = testConfig.tmdb.url;
+  const tmdbPath = testConfig.tmdb.path;
+
+  nock(`${viaplayUrl}`).get(viaplayPath).reply(200, viaplayJson);
+  nock(`${tmdbUrl}`).get(tmdbPath).reply(200, tmdbJson);
+
+  it('should return a valid response with trailer urls and other relevant data', () => {
+    const response = getTrailerContentForSingleMovie(`${viaplayUrl}${viaplayPath}`)
+    const resource = response.then(response => response.resource);
+    const videoContent = response.then(response => response.trailers);
+
+    expect(resource).to.eventually.equal(`${viaplayUrl}${viaplayPath}`);
+    expect(videoContent).to.eventually.have.length(3);
+  });
+
 });
