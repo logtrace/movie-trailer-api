@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "options": {
     "mocha": "--require scripts/test_runner src/**/__tests__/**/*.js",
-    "babel": "./src --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files"
+    "babel": "./src --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log,./src/__tests --copy-files"
   },
   "scripts": {
     "testonly": "mocha $npm_package_options_mocha",
