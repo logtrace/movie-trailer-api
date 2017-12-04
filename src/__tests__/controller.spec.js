@@ -6,9 +6,9 @@ import nock from 'nock';
 import testConfig from './testConfig';
 import {viaplayJson, viaplay404Json, tmdbJson, tmdb404Json} from './fixtures';
 
-import {getMovieContentFromResource, getMovieIdFromResource} from '../api/movieContentController';
-import { getTrailerContent, getTrailerContentFromMovieId, getTrailerUrlMappedContent, getTrailerUrlsFromMovieId } from '../api/tmdbContentController';
-import { getTrailerContentForSingleMovie } from '../api/trailerController';
+import {getMovieContentFromResource, getMovieIdFromResource} from '../api/controllers/movieContentController';
+import { getTrailerContent, getTrailerContentFromMovieId, getTrailerUrlMappedContent, getTrailerUrlsFromMovieId } from '../api/controllers/tmdbContentController';
+import { getTrailerContentForSingleMovie } from '../api/controllers/trailerController';
 
 chai.use(promised);
 
