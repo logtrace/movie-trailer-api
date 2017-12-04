@@ -1,5 +1,9 @@
 import { getTrailerContentForSingleMovie } from '../controllers/trailerController';
 
+/**
+ * Validate the parameter {required, valid url}
+ * @param {string} param - parameter name
+ */
 const paramValidator = param => {
   return (req, res, next) => {
     const resourceLink = req.query[param];

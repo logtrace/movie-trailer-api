@@ -2,6 +2,10 @@ import axios from 'axios';
 
 import config from '../../config';
 
+/**
+ * Do api call with IMDB movie id to get video content from TMDB
+ * @param {string} movieId
+ */
 export const getTrailerContentFromMovieId = movieId => {
   const {url, queryParams} = config.tmdb;
 
@@ -19,6 +23,10 @@ export const getTrailerContentFromMovieId = movieId => {
     });
 };
 
+/**
+ * Get trailer video from TMDB content
+ * @param {json} content
+ */
 export const getTrailerContent = content => {
   if (content && content.videos && content.videos.results) {
     return content.videos.results;
@@ -27,6 +35,10 @@ export const getTrailerContent = content => {
   }
 };
 
+/**
+ * Filter out trailer videos from video content
+ * @param {Array} videoContentList
+ */
 export const getTrailerUrlMappedContent = videoContentList => {
   if (videoContentList) {
     return videoContentList.map(videoContent => {
@@ -44,6 +56,10 @@ export const getTrailerUrlMappedContent = videoContentList => {
   }
 };
 
+/**
+ * Get trailer videos list from IMDB movie id
+ * @param {string} movieId
+ */
 export const getTrailerUrlsFromMovieId = movieId => {
   return getTrailerContentFromMovieId(movieId)
     .then(getTrailerContent)
